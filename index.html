@@ -3,10 +3,11 @@
 <head>
 	<title>Password Gen</title>
 	<meta charset="UTF-8">
+	<link rel="stylesheet" href="style.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
 </head>
-<body>
+<body class="bodyDefault">
 <main>
 	<div class="center">
 		<form>
@@ -24,13 +25,15 @@
 		</form>
 	</div>
 	<div>
-		<p style="white-space: nowrap;" id="output"></p>
+		<p id="copyTag" class="invisible" style="color: green; margin: 0; padding: 0;">Copied!</p>
+		<input class="invisible" type="text" id="outputField" placeholder="Password" value="" readonly>
+		<button onclick="copyPass()" id="copyButton" class="invisible">Copy</button>
 	</div>
 	<script>
 		function onSubmit(){
 			var chars = 0;
 			var chars = parseInt(document.getElementById('chars').value);
-			document.getElementById("output").innerHTML = chars;
+			document.getElementById("chars").innerHTML = chars;
 			var nums = true;
 			var nums = document.querySelector('#nums').checked;
 			var special = true;
@@ -67,20 +70,32 @@
 			for (i = 0; i < finalChars; i++){
 				password += finalList.charAt(Math.floor(Math.random() * finalList.length));
 			}
-			password = password.replace(/"/g, '&#34;');
-			password = password.replace(/\//g, '&#47;');
-			password = password.replace(/\u2215/g, '&#92;');
-			password = password.replace(/</g, '&#60;');
-			password = password.replace(/>/g, '&#62;');
+			showCopy();
 			writePassToScreen(password);
+		}
+
+		function showCopy(){
+			var copyButton = document.getElementById("copyButton");
+			copyButton.classList.remove("invisible");
+			var outputField = document.getElementById('outputField');
+			outputField.classList.remove("invisible");
+		}
+
+		function copyPass(){
+			var output = document.getElementById("outputField");
+			output.select();
+			document.execCommand("copy");
+			var copyTag = document.getElementById('copyTag');
+			copyTag.classList.remove("invisible");
+			setTimeout(() => {
+				copyTag.classList.add("invisible")
+			}, 2500);
 		}
 	
 		function writePassToScreen(password){
-			var finalPass = document.getElementById("output");
-			finalPass.innerHTML = password;
+			document.getElementById("outputField").value = password;
 		}
 	</script>
 </main>
-
 </body>
 </html>

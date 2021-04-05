@@ -1,7 +1,7 @@
 {
-  "name": "word_gen_electron",
-  "version": "0.0.1",
-  "description": "word gen with real ui",
+  "name": "password_gen_electron",
+  "version": "1.0.1",
+  "description": "Password Generator made using the Electron Framework",
   "main": "index.js",
   "scripts": {
     "start": "electron-forge start",

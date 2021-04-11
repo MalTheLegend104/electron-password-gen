@@ -31,12 +31,8 @@
 	</div>
 	<script>
 		function onSubmit(){
-			var chars = 0;
 			var chars = parseInt(document.getElementById('chars').value);
-			document.getElementById("chars").innerHTML = chars;
-			var nums = true;
 			var nums = document.querySelector('#nums').checked;
-			var special = true;
 			var special = document.querySelector('#special').checked;
 			makePass(chars, nums, special);
 		}
@@ -47,8 +43,7 @@
 			hasSpecial = Boolean(special);
 			if (chars > 4096){
 				finalChars = 4096;
-			} else 
-			if (chars < 1){
+			} else if (chars < 1){
 				finalChars = 8;
 			} else if (isNaN(chars)){
 				finalChars = 8;
@@ -71,7 +66,7 @@
 				password += finalList.charAt(Math.floor(Math.random() * finalList.length));
 			}
 			showCopy();
-			writePassToScreen(password);
+			document.getElementById("outputField").value = password;
 		}
 
 		function showCopy(){
@@ -90,10 +85,6 @@
 			setTimeout(() => {
 				copyTag.classList.add("invisible")
 			}, 2500);
-		}
-	
-		function writePassToScreen(password){
-			document.getElementById("outputField").value = password;
 		}
 	</script>
 </main>

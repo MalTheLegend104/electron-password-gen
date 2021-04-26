@@ -1,0 +1,15 @@
+
+[
+    {
+        "id": "theme",
+        "value": "Dark"
+    },
+    {
+        "id": "copySettings",
+        "value": "True"
+    },
+    {
+        "id": "defaultValue",
+        "value": "8"
+    }
+]

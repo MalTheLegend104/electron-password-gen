@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Settings</title>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="styling/css/style.css">
+	<link rel="stylesheet" href="styling/css/all.min.css">
+    <script type="text/javascript" src="js/settingsOnload.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
+</head>
+<body id="body" class="">
+	<main>
+        <a href="index.html"><i class="fas fa-times-circle"></i></a>
+        <br>
+        <form>
+            <label class="tooltip">
+                Theme:
+                <span class="tooltiptext">Sets the theme.</span>
+            </label>
+                <select id="theme">
+                    <option value="Dark">Dark</option>
+                    <option value="Light">Light</option>
+                </select>
+            <br>
+            <label class="tooltip" >
+                AutoCopy:
+                <span class="tooltiptext">Automatically copy generated password when submit is clicked.</span>
+            </label>
+                <select id="copySettings">
+                    <option value="False">False</option>
+                    <option value="True">True</option>
+                </select>
+            <br>
+            <label class="tooltip">
+                Default Value:
+                <span class="tooltiptext">Sets the default character length to this number in case of an error, or if the character amount box is left empty.</span>
+            </label>
+                <br>
+                <input id="chars" type="number" placeholder="Character Amount" value="" autofocus>
+            <br>
+            <br>
+            <button id="saveButton">Save</button>
+            <button id="resetButton">Reset</button>
+            <script src="js/settings.js"></script>
+        </form>
+	</main>
+</body>
+</html>

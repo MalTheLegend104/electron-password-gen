@@ -3,90 +3,37 @@
 <head>
 	<title>Password Gen</title>
 	<meta charset="UTF-8">
-	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="styling/css/style.css">
+	<link rel="stylesheet" href="styling/css/all.min.css">
+	<script type="text/javascript" src="js/password.js"></script>
+	<script type="text/javascript" src="js/onload.js"></script>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
 </head>
-<body class="bodyDefault">
-<main>
-	<div class="center">
-		<form>
-			<label>Character Amount</label>
-			<br>
-			<input id="chars" type="number" placeholder="Character Amount" autofocus>
-			<br>
-			<label>Numbers</label>
-			<input id="nums" type="checkbox" checked>
-			<br>
-			<label>Special Characters</label>
-			<input id="special" type="checkbox" checked>
-			<br>
-			<button type="button" onclick="onSubmit()">Submit</button>
-		</form>
-	</div>
-	<div>
-		<p id="copyTag" class="invisible" style="color: green; margin: 0; padding: 0;">Copied!</p>
-		<input class="invisible" type="text" id="outputField" placeholder="Password" value="" readonly>
-		<button onclick="copyPass()" id="copyButton" class="invisible">Copy</button>
-	</div>
-	<script>
-		function onSubmit(){
-			var chars = parseInt(document.getElementById('chars').value);
-			var nums = document.querySelector('#nums').checked;
-			var special = document.querySelector('#special').checked;
-			makePass(chars, nums, special);
-		}
+<body class="" id="body">
+	<a href="settings.html"><i class="fas fa-cog"></i></a>
 	
-		function makePass(chars, nums, special){
-			chars = parseInt(chars);
-			hasNums = Boolean(nums);
-			hasSpecial = Boolean(special);
-			if (chars > 4096){
-				finalChars = 4096;
-			} else if (chars < 1){
-				finalChars = 8;
-			} else if (isNaN(chars)){
-				finalChars = 8;
-			} else {
-				finalChars = chars;
-			}
-			var finalList = "";
-			const alpha = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
-			const numbers = "1234567890";
-			const specialChars = ",<.>/?!@#$%^&*()_-+=:;\"\u2215|~`'";
-			finalList += alpha;
-			if (hasNums === true){
-				finalList += numbers;
-			}
-			if (hasSpecial === true){
-				finalList += specialChars;
-			}
-			var password = "";
-			for (i = 0; i < finalChars; i++){
-				password += finalList.charAt(Math.floor(Math.random() * finalList.length));
-			}
-			showCopy();
-			document.getElementById("outputField").value = password;
-		}
-
-		function showCopy(){
-			var copyButton = document.getElementById("copyButton");
-			copyButton.classList.remove("invisible");
-			var outputField = document.getElementById('outputField');
-			outputField.classList.remove("invisible");
-		}
-
-		function copyPass(){
-			var output = document.getElementById("outputField");
-			output.select();
-			document.execCommand("copy");
-			var copyTag = document.getElementById('copyTag');
-			copyTag.classList.remove("invisible");
-			setTimeout(() => {
-				copyTag.classList.add("invisible")
-			}, 2500);
-		}
-	</script>
-</main>
+	<main>
+		<div class="center">
+			<form>
+				<label>Character Amount</label>
+				<br>
+				<input id="chars" type="number" placeholder="Character Amount" autofocus>
+				<br>
+				<label>Numbers</label>
+				<input id="nums" type="checkbox" checked>
+				<br>
+				<label>Special Characters</label>
+				<input id="special" type="checkbox" checked>
+				<br>
+				<button type="button" onclick="onSubmit()">Submit</button>
+			</form>
+		</div>
+		<div>
+			<p id="copyTag" class="invisible" style="color: green; margin: 0; padding: 0;">Copied!</p>
+			<input class="invisible" type="text" id="outputField" placeholder="Password" value="" readonly>
+			<button onclick="copyPass()" id="copyButton" class="invisible">Copy</button>
+		</div>
+	</main>
 </body>
 </html>

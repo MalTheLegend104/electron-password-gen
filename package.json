@@ -1,7 +1,7 @@
 {
-  "name": "password_gen_electron",
-  "version": "1.0.1",
-  "description": "Password Generator made using the Electron Framework",
+  "name": "password_gen",
+  "version": "1.5.1",
+  "description": "Fully featured password generator, with user settings and several features to make it quick and easy to use.",
   "main": "index.js",
   "scripts": {
     "start": "electron-forge start",

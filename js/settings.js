@@ -1,12 +1,4 @@
 let fs = require('fs')
-let $ = require('jquery')
-
-$('#saveButton').on('click', () => {
-    updateSettings();
-});
-$('#resetButton').on('click', () => {
-    resetSettings();
-});
 
 function updateSettings(){
     var theme = document.getElementById('theme').value;
@@ -34,14 +26,25 @@ var finalJSON =
     }
 ]
 `
-    console.log(finalJSON)
-    fs.writeFileSync('./config.json', `${finalJSON}`, function(err) {
+    try{
+        writeToFile(finalJSON);
+    } catch (err) {
+        alert(`Unexpected error occured: \n${err}\nErrors like this should not occur.\nPlease report this error as an issue on the github repo, along with a screenshot of this error message.`)
+    }
+    
+    
+}
+
+function writeToFile(finalJSON){
+    fs.writeFileSync('./resources/app/config.json', `${finalJSON}`, function(err) {
         if (err) {
             alert(`Unexpected error occured: \n${err}\nErrors like this should not occur.\nPlease report this error as an issue on the github repo, along with a screenshot of this error message.`)
             return console.error(err);
         }
         console.log("Data written successfully!");
-    });
+    });  
+
+    window.location.reload(true); 
 }
 
 function resetSettings(){
@@ -62,11 +65,6 @@ var finalJSON =
     }
 ]
 `
-    fs.writeFileSync('./config.json', `${finalJSON}`, function(err) {
-        if (err) {
-            alert(`An expected error occured: \n${err}\nErrors like this should not occur.\nPlease report this error as an issue on the github repo, along with a screenshot of this error message.`)
-            return console.error(err);
-        }
-        console.log("Data written successfully!");
-    });
+    writeToFile(finalJSON);
+    window.location.reload(true); 
 }

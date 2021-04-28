@@ -1,7 +1,7 @@
 # electron-password-gen
 A password generator written with the node.js and electron.js frameworks.
 
-# Update 1.5.1
+# Update 1.5.2
 This update brings the user settings menu, allowing for themes, an option to automatically copy generated passwords, and a default value so you dont have to input a value for the password every time. Along with the new UX, there was a lot of backend changes to make things operate more smoothly and seemlessly, and it also is a whole lot more readable than it was before.
 
 # Future Plans

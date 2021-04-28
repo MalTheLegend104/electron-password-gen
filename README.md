@@ -8,5 +8,5 @@ This update brings the user settings menu, allowing for themes, an option to aut
 The next, and likely last, update of this program will add some more settings to make it as conveient as possible to use, like automatically keeping the settings for the checkboxes, and potentially user customizable themes. The last update will also probably contain an installer, so you don't have to worry about trying to get it set up yourself.
 
 # Known Bugs
-These Bugs are know and are actively being worked on. 
+These Bugs are know and are actively being worked on. <br>
 • Problem when saving settings if the program is saved to Progam Files, or other restriced folders.

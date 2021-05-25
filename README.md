@@ -8,4 +8,3 @@ This update brings some QOL changes in the settings, the ability to exclude lett
 • Tempates for issues/request. <br>
 • There will be no feature updates from here on out, unless there is major support behind one feature. <br>
 • Hot Fixes will be avaiable as bugs are discovered and patched. <br>
-• An installer will release soon™. <br>

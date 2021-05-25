@@ -1,7 +1,7 @@
 ---
 name: Question
 about: Any questions pertaining to the app.
-title: ''
+title: '[QUESTION] - Write question topic here'
 labels: question
 assignees: ''
 

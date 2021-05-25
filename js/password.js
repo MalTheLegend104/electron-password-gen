@@ -1,35 +1,75 @@
+const electron = require('electron');
+const userDataPath = (electron.app || electron.remote.app).getPath('userData');
+var dir = userDataPath + '/config/config.json';
+const config = require(dir)
+
+document.addEventListener("DOMContentLoaded", function(){
+    readConfig();
+});
+
+function readConfig(){
+    setTheme();
+    setDefaultValue();
+    setCheckBoxes();
+}
+
+function setTheme(){
+    var currentSelect = config.theme.current;
+    var body = document.getElementById("body")
+    if (currentSelect == "Light"){
+        body.classList.add("Light");
+    } else if (currentSelect == "Dark"){
+        body.classList.add("Dark");
+    } else if (currentSelect == "Custom"){
+        document.body.style.backgroundColor = config.theme.userCustom;
+        document.body.style.color = config.theme.text;
+    }
+}
+
+function setDefaultValue(){
+    let defaultValue = config.settings.defaultValue;
+    if (defaultValue == ""){
+        defaultValue = 8;
+    }
+    document.getElementById("chars").value = defaultValue;
+}
+
+function setCheckBoxes(){
+    let numbersCheck = config.checkboxes.numbers;
+    let specialCheck = config.checkboxes.special;
+    let alphaCheck = config.checkboxes.letters;
+    let nums = document.getElementById("nums")
+    let special = document.getElementById("special")
+    let letters = document.getElementById("letters")
+    if (numbersCheck === "True"){
+        nums.checked = true;
+    }
+    if (specialCheck === "True"){
+        special.checked = true;
+    }
+    if (alphaCheck === "True"){
+        letters.checked = true;
+    } 
+}
+
 function onSubmit(){
-    getDefaultValue();
+    preloadValues();
 }
 
-function getDefaultValue() {
-
-    fetch('config.json').then(function (response){
-        return response.json();
-    })
-    .then(function (data){
-        preloadValues(data);
-    })
-    .catch(function (err){
-        data = 8;
-        preloadValues(data);
-        console.log(err);
-        alert(`Unexpected error occured: \n${err}\nErrors like this should not occur.\nPlease report this error as an issue on the github repo, along with a screenshot of this error message.`)
-    })
-}
-
-function preloadValues(data){
+function preloadValues(){
     var chars = parseInt(document.getElementById('chars').value);
     var nums = document.querySelector('#nums').checked;
     var special = document.querySelector('#special').checked;
-    var defaultValue = data[2].value;
-    makePass(chars, nums, special, defaultValue);
+    var letters = document.querySelector('#letters').checked;
+    var defaultValue = config.settings.defaultValue;
+    makePass(chars, nums, special, letters, defaultValue);
 }
 
-function makePass(chars, nums, special, defaultValue){
+function makePass(chars, nums, special, letters, defaultValue){
     chars = parseInt(chars);
     hasNums = Boolean(nums);
     hasSpecial = Boolean(special);
+    hasLetters = Boolean(letters);
     if (chars > 4096){
         finalChars = 4096;
     } else if (chars < 1){
@@ -43,37 +83,30 @@ function makePass(chars, nums, special, defaultValue){
     const alpha = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
     const numbers = "1234567890";
     const specialChars = ",<.>/?!@#$%^&*()_-+=:;\"\u2215|~`'";
-    finalList += alpha;
+    if (hasLetters === true){
+        finalList += alpha;
+    }
     if (hasNums === true){
         finalList += numbers;
     }
     if (hasSpecial === true){
         finalList += specialChars;
     }
+    if(finalList === ""){
+        finalList += alpha;
+    }
     var password = "";
     for (i = 0; i < finalChars; i++){
         password += finalList.charAt(Math.floor(Math.random() * finalList.length));
     }
-    checkAutoCopy();
+    autoCopy();
     showCopy();
     document.getElementById("outputField").value = password;
 }
 
-function checkAutoCopy(){
-    fetch('config.json').then(function (response){
-        return response.json();
-    })
-    .then(function (data){
-        autoCopy(data);
-    })
-    .catch(function (err){
-        console.log(err);
-        alert(`Unexpected error occured: \n${err}\nErrors like this should not occur.\nPlease report this error as an issue on the github repo, along with a screenshot of this error message.`)
-    })
-}
 
-function autoCopy(data){
-    if (data[1].value == "True"){
+function autoCopy(){
+    if (config.settings.autoCopy == "True"){
         var output = document.getElementById("outputField");
         output.select();
         document.execCommand("copy");

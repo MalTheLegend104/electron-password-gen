@@ -1,6 +1,6 @@
 {
-  "name": "password_gen",
-  "version": "1.5.2",
+  "name": "BGS Password Gen",
+  "version": "1.6.0",
   "description": "Fully featured password generator, with user settings and several features to make it quick and easy to use.",
   "main": "index.js",
   "scripts": {

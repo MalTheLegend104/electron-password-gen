@@ -2,6 +2,9 @@
     visibility: hidden !important;
 }
 
+.completelyGone{
+    display: none;
+}
 /*------------------------------------
 Program Themes
 ------------------------------------*/

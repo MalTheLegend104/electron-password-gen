@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Settings</title>
+	<title>BGS - Settings</title>
 	<meta charset="UTF-8">
 	<link rel="stylesheet" href="styling/css/style.css">
 	<link rel="stylesheet" href="styling/css/all.min.css">
-    <script type="text/javascript" src="js/settingsOnload.js"></script>
+    <script src="js/settings.js"></script>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
 </head>
@@ -18,11 +18,56 @@
                 Theme:
                 <span class="tooltiptext">Sets the theme.</span>
             </label>
-                <select id="theme">
+                <select id="theme" onchange="checkboxChange()">
                     <option value="Dark">Dark</option>
                     <option value="Light">Light</option>
+                    <option value="Custom">Custom</option>
                 </select>
+                <div id="customColorDiv" class="completelyGone">
+                    <label>
+                        Background Color:
+                    </label>
+                    <input type="color" id="customColor" />
+                    <br>
+                    <label>
+                        Font Color:
+                    </label>
+                    <select id="text">
+                        <option value="Black">Black</option>
+                        <option value="White">White</option>
+                    </select> 
+                </div>
+            <hr>
+            <label class="tooltip">
+                Default Checkboxes:
+                <span class="tooltiptext">Sets the default value of the checkbox to either on or off.</span>
+            </label>
             <br>
+            <br>
+            <label>
+                Numbers:
+            </label>
+            <select id="numbersCheck">
+                <option value="False">Off</option>
+                <option value="True">On</option>
+            </select>
+            <br>
+            <label>
+                Special Characters:
+            </label>
+            <select id="specialCheck">
+                <option value="False">Off</option>
+                <option value="True">On</option>
+            </select>
+            <br>
+            <label>
+                Letters:
+            </label>
+            <select id="letterCheck">
+                <option value="False">Off</option>
+                <option value="True">On</option>
+            </select>
+            <hr>
             <label class="tooltip" >
                 AutoCopy:
                 <span class="tooltiptext">Automatically copy generated password when submit is clicked.</span>
@@ -36,14 +81,24 @@
                 Default Value:
                 <span class="tooltiptext">Sets the default character length to this number in case of an error, or if the character amount box is left empty.</span>
             </label>
-                <br>
-                <input id="chars" type="number" placeholder="Character Amount" value="" autofocus>
+            <br>
+            <input id="chars" type="number" placeholder="Character Amount" value="" autofocus>
             <br>
             <br>
             <button type="button" id="saveButton" onclick="updateSettings(); return false;">Save</button>
             <button type="button" id="resetButton" onclick="resetSettings(); return false;">Reset</button>
-            <script src="js/settings.js"></script>
         </form>
+        <script>
+            function checkboxChange(){
+                var element = document.getElementById("theme")
+                var customColorDiv = document.getElementById("customColorDiv")
+                if (element.selectedIndex == 2){
+                    customColorDiv.classList.remove("completelyGone")
+                } else {
+                    customColorDiv.classList.add("completelyGone")
+                }
+            }
+        </script>
 	</main>
 </body>
 </html>

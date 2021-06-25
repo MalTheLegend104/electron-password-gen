@@ -1,37 +1,10 @@
-## Welcome to GitHub Pages
+## Breakfast Galaxy Studios - Password Gen
 
-You can use the [editor on GitHub](https://github.com/MalTheLegend104/electron-password-gen/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+### What is it?
+It's an open source password generator. You get to see the code behind the password generation, and rest well knowing that nothing is logging your created passwords in the background. It's got plenty of QOL features to make generating a password quick, effiecient, and customizable. 
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+### Future
+There are currently no planned updates for this program. If a feature gets requested enough it may be added, but nothing is planned. 
 
-### Markdown
-
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/MalTheLegend104/electron-password-gen/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+### About me
+I am an amateur developer, who programs in Java, Javascript, C++, and Python. I am good friends with the owner of Breakfast Galaxy Studios LLC (BGS), and help the team over there with development. This program was developed in partnership with BGS, hence the name.
